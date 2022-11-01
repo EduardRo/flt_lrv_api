@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Models\Invoice;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
+use App\Http\Resources\V1\InvoiceResource;
+use App\Http\Resources\V1\InvoiceCollection;
+
+//use App\Models\Customer;
 
 class InvoiceController extends Controller
 {
@@ -17,8 +21,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //return Invoices::all();
+        //return Invoice::all();
         //
+        return new InvoiceCollection(Invoice::paginate());
     }
 
     /**
@@ -51,6 +56,7 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         //
+        return new InvoiceResource($invoice);
     }
 
     /**
