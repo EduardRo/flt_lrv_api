@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Models\Invoice;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreInvoiceRequest;
-use App\Http\Requests\UpdateInvoiceRequest;
+use App\Http\Requests\V1\StoreInvoiceRequest;
+use App\Http\Requests\V1\UpdateInvoiceRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\InvoiceResource;
 use App\Http\Resources\V1\InvoiceCollection;
@@ -54,7 +54,16 @@ class InvoiceController extends Controller
     {
         //
     }
-
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function bulkStore(Request $request)
+    {
+        //
+    }
     /**
      * Display the specified resource.
      *
