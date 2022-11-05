@@ -30,8 +30,8 @@ class BulkStoreInvoiceRequest extends FormRequest
             '*.customerId'=>['required', 'integer'],
             '*.amount'=>['required', 'numeric'],
             '*.status'=>['required',Rule::in(['P','B','V','P','b','v'])],
-            '*.billedDate'=>['required', 'date_format:format:Y-m-d H:i:s'],
-            '*.paidDate'=>['date_format:format:Y-m-d H:i:s','nullable'],
+            '*.billedDate'=>['required', 'date_format:Y-m-d H:i:s'],
+            '*.paidDate'=>['date_format:Y-m-d H:i:s','nullable'],
            
         ];
     }
@@ -41,7 +41,10 @@ class BulkStoreInvoiceRequest extends FormRequest
         foreach ($this->toArray() as $obj){
             $obj['customer_id']=$obj['customerId'] ?? null;
             $obj['billed_date']=$obj['billedDate'] ?? null;
-            $obj['customer_id']=$obj['customerId'] ?? null;
+            $obj['paid_date']=$obj['paidDate'] ?? null;
+
+            $data[]=$obj;
         }
+        $this->merge($data);
     }
 }
