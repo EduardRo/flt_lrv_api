@@ -14,7 +14,10 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        //protect the route
+        $user = $this->user();
+
+        return $user!=null && $user->tokenCan('create');
     }
 
     /**
