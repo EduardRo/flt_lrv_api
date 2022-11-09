@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\api\V1\CustomerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,11 @@ use App\Http\Controllers;
 |
 */
 
+// api fara authetication pentru test flutter
+Route::get('/customerstest',[CustomerController::class,'customertest']);
+
+/*
+Route::apiResource('customers', CustomerController::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -29,9 +36,11 @@ Route::group([
 ]
 , function(){
 
-    Route::apiResource('customers', CustomerController::class);
+    //Route::apiResource('customers', CustomerController::class);
     Route::apiResource('invoices', InvoiceController::class);
 
     //insert bulk
     Route::post('invoices/bulk','InvoiceController@bulkStore');
 });
+
+*/

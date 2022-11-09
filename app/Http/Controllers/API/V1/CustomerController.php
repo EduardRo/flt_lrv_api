@@ -34,6 +34,22 @@ class CustomerController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    //CustomerController@customertest
+    public function customertest(Request $request)
+    {
+       
+        $customers = new Customer;
+        
+        return $customers->all('id', 'name','email','address');
+          
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
