@@ -18,7 +18,7 @@ use App\Http\Controllers\api\V1\CustomerController;
 */
 
 // api fara authetication pentru test flutter
-Route::get('/customerstest',[CustomerController::class,'customertest']);
+//Route::get('/customerstest',[CustomerController::class,'customertest']);
 
 /*
 Route::apiResource('customers', CustomerController::class);
@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+*/
 // api/v1/customers
 
 Route::group([
@@ -36,11 +36,9 @@ Route::group([
 ]
 , function(){
 
-    //Route::apiResource('customers', CustomerController::class);
+    Route::apiResource('customers', CustomerController::class);
     Route::apiResource('invoices', InvoiceController::class);
 
     //insert bulk
     Route::post('invoices/bulk','InvoiceController@bulkStore');
 });
-
-*/
