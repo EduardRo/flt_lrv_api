@@ -11,6 +11,7 @@ use App\Models\Invoice;
  */
 class InvoiceFactory extends Factory
 {
+    protected $model = Invoice::class;
     /**
      * Define the model's default state.
      *
